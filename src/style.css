@@ -1,9 +1,19 @@
 @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500&display=swap');
 
-:root
+:root {
+    --clr-strong:#43ed9c;
+    --clr-very-strong: #0070f6;
+    --clr-weak:#f5203e;
+    --clr-very-weak: #f5203e;
+    --clr-good:#f1c80b;
+
+    --fs-heading: 4.5rem;
+    --fs-cta: 1rem;
+    --fs-param: 1.375rem;
+}
 
 * {
-    box-sizing: content-box;
+    box-sizing: border-box;
     margin: 0;
     padding: 0;
 }
@@ -11,14 +21,14 @@
 body {
     margin: 0;
     margin: 0;
-    width: 100vw;
+    /* width: 100vw; */
     height: 100vh;
     background: url(../assets/faint-orange-bg.svg);
-    background-repeat: no-repeat;
     background-size: cover;
     font-family: 'JetBrains Mono', monospace;
 }
 #app {
+    padding: 7rem 0;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -28,24 +38,29 @@ body {
     text-align: center;
 }
 h1 {
-    font-size: 56px;
+    font-size: var(--fs-heading);
     margin: 1rem 0 2rem 0;
 }
 
 
-#passwordParams {
+#appContainer {
     display: flex;
     flex-flow: row nowrap;
     justify-content: space-around;
-    align-items: center;
-    min-width: 940px;
+    align-items: flex-end;
 }
+
+#passwordParams {
+    display: flex;
+    flex-flow: column;
+    height: 100%;
+}
+
 .imgContainer {
     height: 324px;
     width: 360px;
     display: flex;
     flex-direction: column;
-    align-items: flex-end;
     justify-content: flex-end;
 }
 .imgContainer img {
@@ -54,7 +69,8 @@ h1 {
 
 .outputContainer {
     display: flex;
-    width: 537px;
+    align-items: center;
+    /* width: 537px; */
 }
 
 .passwordOutput {
@@ -63,7 +79,7 @@ h1 {
     background-color: white;
     border: 1px solid #EDEDED;
     border-radius: 24px;
-    width: 535px;
+    width: 537px;
     justify-content: space-around;
 
 }
@@ -76,11 +92,12 @@ h1 {
     cursor: text;
     user-select: all;
     overflow: hidden;
+    text-overflow: ellipsis;
 
 }
 
 .strenghBadge {
-    background-color: black;
+    background-color: var(--clr-very-strong);
     height: 2rem;    
     color: white;
     letter-spacing: 2px;
@@ -90,6 +107,11 @@ h1 {
     display: flex;
     align-items: center;
     font-weight: 700;
+    font-size: var(--fs-cta);
+    width: fit-content;
+    overflow: hidden;
+    text-overflow: ellipsis;
+
 }
 
 .resetButton {
@@ -105,11 +127,13 @@ h1 {
 .copyButton {
     padding: 1rem;
     border-radius: 28px;
-    background-color: black;
+    background-color: var(--clr-very-strong) ;
     box-shadow: 0 0px 32px 0 rgba(50, 202, 96, 0.4);
     border: none;
-    margin: 1rem;
+    margin-left: 1rem;
+    margin-right: 1rem;
     font-weight: 700;
+    font-size:var(--fs-cta);
     cursor: pointer;
     color: white;
     font-family: 'JetBrains Mono', monospace;
@@ -117,7 +141,109 @@ h1 {
 }
 
 .copyButton:hover {
-
-    background-color: green ;
+    background: black;
     transition: all ease .3s;
+}
+
+.passwordSettings {
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: center;
+    width: 100%;
+    margin-top: 25px;
+}
+
+.passwordSettings > * {
+    width: 100%;
+    margin-top: 25px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.lengthContainer {
+    margin-bottom: 25px;
+}
+
+.paramTitle {
+    font-size: var(--fs-param);
+    font-weight: 300;
+}
+
+.charSettings {
+    display: flex;
+    gap: 0 10px;
+}
+label {
+    display: flex;
+    align-items: center;
+    padding: 0.75rem;
+    cursor: pointer;
+}
+
+ /* Input range styling */
+input[type="range"] {
+    width: 200px;
+}
+
+/* Input checkbox styling */
+input[type="checkbox"] {
+    width: 20px;
+    height: 20px;
+
+}
+
+
+
+@media only screen and (max-width: 1180px) {
+    :root {
+        --fs-heading: 3.5rem;
+    }
+
+    #app {
+        padding: 3rem 0;
+    }
+
+    #appContainer {
+        flex-flow: column;
+        align-items: center;
+    }
+    .imgContainer {
+        margin-bottom: 2rem;
+    }
+    .outputContainer {
+        flex-flow: column;
+        width: 100%;
+    }
+    .copyButton {
+        margin-top: 1rem;
+    }
+    .passwordOutput {
+        width: 100%;
+    }
+}
+@media only screen and (max-width: 600px) {
+    :root {
+        --fs-cta: 0.75rem;
+        --fs-param: 1.125rem;
+    }
+
+    #app {
+        padding: 1rem 0;
+    }
+
+    .lengthContainer,
+    .charContainer {
+        margin-bottom: 0;
+        width: 100%;
+        display: flex;
+        flex-flow: column;
+    }
+    .lengthContainer > *,
+    .charContainer > * {
+        margin: 1rem 0;
+    }
+    .passwordOutput {
+        width: 365px;
+    }
 }
