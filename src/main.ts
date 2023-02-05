@@ -23,17 +23,18 @@ document.querySelector<HTMLDivElement>('#app')!.innerHTML = `
                         <img src="../assets/refresh.svg"></img>
                     </button>
                 </div>
-                <button class="copyButton">Copy</button>
-            
+                <div class="btnContainer">
+                    <button class="copyButton">Copy</button>
+                </div>
         </div>
         <div class="passwordSettings">
             <div class="lengthContainer">
                 <label for="length" class="paramTitle">
                     Password Length:
-                    <strong>0</strong>
+                    <strong><output id="num">11</output></strong>
                 </label>
                 <div class="rangeInput">
-                    <input type="range" min="1" max="21" value="10" id="length">
+                    <input type="range" min="1" max="21" value="11" id="length" oninput="num.value = this.value">
                 </div>
             </div>
             <div class="charContainer">
@@ -68,8 +69,9 @@ const strenghBadge = <HTMLSpanElement>document.querySelector(".strenghBadge");
 const copyButton = <HTMLButtonElement>document.querySelector(".copyButton");
 const refreshButton = <HTMLButtonElement>document.querySelector(".resetButton");
 const anyClick = <HTMLElement>document.querySelector(".update");
-
+const lengthOutput = <HTMLElement>document.querySelector("strong");
  
+
 
 class PasswordGenerator {
     _password: string;

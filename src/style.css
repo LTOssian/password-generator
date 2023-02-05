@@ -19,8 +19,6 @@
 }
 
 body {
-    margin: 0;
-    margin: 0;
     /* width: 100vw; */
     height: 100vh;
     background: url(../assets/faint-orange-bg.svg);
@@ -34,6 +32,7 @@ body {
     align-items: center;
     justify-content: center;
 }
+
 #header {
     text-align: center;
 }
@@ -138,6 +137,7 @@ h1 {
     color: white;
     font-family: 'JetBrains Mono', monospace;
     letter-spacing: 2px;
+    line-height: 12px;
     transition: all ease .3s;
 
 }
@@ -145,6 +145,14 @@ h1 {
 .copyButton:hover {
     padding: 1.175rem;
     transition: all ease .3s;
+}
+
+.btnContainer {
+    height: 62px;
+    width: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
 }
 
 .passwordSettings {
@@ -187,6 +195,10 @@ label[for="length"] {
     padding: 0;
 }
 
+label output {
+    padding: 1rem;
+}
+
  /* Input range styling */
 input[type="range"] {
     width: 200px;
@@ -225,6 +237,10 @@ input[type="checkbox"] {
     }
     .passwordOutput {
         width: 100%;
+    }
+
+    .btnContainer {
+        justify-content: center;
     }
 }
 @media only screen and (max-width: 600px) {
