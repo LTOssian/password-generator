@@ -1,5 +1,6 @@
 import './style.css'
 
+
 document.querySelector<HTMLDivElement>('#app')!.innerHTML = `
 <div id="header">
     <h1 class="fs-heading">Password Generator</h1>
@@ -65,7 +66,8 @@ document.querySelector<HTMLDivElement>('#app')!.innerHTML = `
 const passwordOutput = <HTMLParagraphElement>document.querySelector(".password");
 const strenghBadge = <HTMLSpanElement>document.querySelector(".strenghBadge");
 const copyButton = <HTMLButtonElement>document.querySelector(".copyButton");
-
+const refreshButton = <HTMLButtonElement>document.querySelector(".resetButton");
+const anyClick = <HTMLElement>document.querySelector(".update");
 
  
 
@@ -103,7 +105,12 @@ class PasswordGenerator {
         return lengthValue;
     }
 
+    resetOutput = () => {
+         this._password = '';
+    }
+
     updateSettings = () => {
+        this.resetOutput()
         this._length = this.getLength();
         this._uppercaseStatus = (<HTMLInputElement>document.querySelector('#toggleUppercase')).checked;
         this._lowercaseStatus = (<HTMLInputElement>document.querySelector('#toggleLowercase')).checked;
@@ -130,12 +137,21 @@ class PasswordGenerator {
         return dataset
     }
 
+    showOutput = () => {
+        passwordOutput.innerText = this._password;
+    }
+
     generatePassword = () => {
         this.updateSettings();
-        const dataset = this.generateDataset()
+        const dataset = this.generateDataset();
+        if (dataset) {
+            for (let i = 0; i < this._length; i++) {
+                this._password += dataset[Math.floor(Math.random() * dataset.length)];
+            }
+            this.showOutput();
+        }
     }
+
 }
 
-const guinea = new PasswordGenerator();
-guinea.generatePassword();
-
+refreshButton.addEventListener('click', new PasswordGenerator().generatePassword);
