@@ -98,7 +98,7 @@ class PasswordGenerator {
 
     private dataAlphabetLowerCase: string = 'abcdefghijklmnopqrtuvwxyz';
     private dataAlphabetUpperCase: string = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
-    private dataSymbols: string = "~`! @#$%^&*()_-+={[}]|:;'<,>.?/";
+    private dataSymbols: string = "~`!@#$%^&*()_-+={[}]|:;'<,>.?/";
     private dataDigits: string = '1234567890';
 
 
