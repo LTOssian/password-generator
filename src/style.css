@@ -183,6 +183,10 @@ label {
     cursor: pointer;
 }
 
+label[for="length"] {
+    padding: 0;
+}
+
  /* Input range styling */
 input[type="range"] {
     width: 200px;
@@ -192,7 +196,6 @@ input[type="range"] {
 input[type="checkbox"] {
     width: 20px;
     height: 20px;
-
 }
 
 
@@ -215,7 +218,7 @@ input[type="checkbox"] {
     }
     .outputContainer {
         flex-flow: column;
-        width: 100%;
+        width: 537px;
     }
     .copyButton {
         margin-top: 1rem;

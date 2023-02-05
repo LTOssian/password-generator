@@ -28,10 +28,10 @@ document.querySelector<HTMLDivElement>('#app')!.innerHTML = `
         </div>
         <div class="passwordSettings">
             <div class="lengthContainer">
-                <h2 class="paramTitle">
+                <label for="length" class="paramTitle">
                     Password Length:
                     <strong>0</strong>
-                </h2>
+                </label>
                 <div class="rangeInput">
                     <input type="range" min="1" max="21" value="10" id="length">
                 </div>
@@ -149,6 +149,8 @@ class PasswordGenerator {
                 this._password += dataset[Math.floor(Math.random() * dataset.length)];
             }
             this.showOutput();
+        } else {
+            //handle error function
         }
     }
 
