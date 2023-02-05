@@ -60,5 +60,35 @@ document.querySelector<HTMLDivElement>('#app')!.innerHTML = `
     </div>
 
 </section>
-
 `
+
+const passwordOutput = <HTMLParagraphElement>document.querySelector(".password");
+const strenghBadge = <HTMLSpanElement>document.querySelector(".strenghBadge");
+const copyButton = <HTMLButtonElement>document.querySelector(".copyButton");
+const lengthValue: number = parseInt((<HTMLInputElement>document.querySelector("#length")).value, 10);
+
+class PasswordGenerator {
+    _password: string;
+    _length: number;
+    _uppercaseStatus: boolean;
+    _numberStatus: boolean;
+    _symbolStatus: boolean;
+    _digitStatus: boolean;
+
+    constructor(
+        length: number = 0,
+        uppercaseStatus: boolean = false,
+        numberStatus: boolean = false,
+        symbolStatus: boolean = false,
+        digitStatus: boolean = false
+    ) {
+        this._password = '';
+        this._length = length;
+        this._uppercaseStatus = uppercaseStatus;
+        this._numberStatus = numberStatus;
+        this._symbolStatus = symbolStatus;
+        this._digitStatus = digitStatus;
+    }
+
+
+}
