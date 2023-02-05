@@ -128,7 +128,7 @@ h1 {
     padding: 1rem;
     border-radius: 28px;
     background-color: var(--clr-very-strong) ;
-    box-shadow: 0 0px 32px 0 rgba(50, 202, 96, 0.4);
+    box-shadow: 0 0px 16px 0 #0070f6;
     border: none;
     margin-left: 1rem;
     margin-right: 1rem;
@@ -138,10 +138,12 @@ h1 {
     color: white;
     font-family: 'JetBrains Mono', monospace;
     letter-spacing: 2px;
+    transition: all ease .3s;
+
 }
 
 .copyButton:hover {
-    background: black;
+    padding: 1.175rem;
     transition: all ease .3s;
 }
 
