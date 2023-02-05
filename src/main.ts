@@ -39,7 +39,7 @@ document.querySelector<HTMLDivElement>('#app')!.innerHTML = `
                 <h2 class="paramTitle">Characters used:</h2>
                 <div class="charSettings">
                     <label for="toggleUppercase">
-                        <input type="checkbox" name="toggleUppercase" id="toggleUppercase">
+                        <input type="checkbox" name="toggleUppercase" id="toggleUppercase" checked="true">
                         <span>ABC</span>
                     </label>
                     <label for="toggleLowercase">
@@ -65,30 +65,77 @@ document.querySelector<HTMLDivElement>('#app')!.innerHTML = `
 const passwordOutput = <HTMLParagraphElement>document.querySelector(".password");
 const strenghBadge = <HTMLSpanElement>document.querySelector(".strenghBadge");
 const copyButton = <HTMLButtonElement>document.querySelector(".copyButton");
-const lengthValue: number = parseInt((<HTMLInputElement>document.querySelector("#length")).value, 10);
+
+
+ 
 
 class PasswordGenerator {
     _password: string;
     _length: number;
     _uppercaseStatus: boolean;
-    _numberStatus: boolean;
+    _lowercaseStatus: boolean;
     _symbolStatus: boolean;
     _digitStatus: boolean;
 
     constructor(
         length: number = 0,
         uppercaseStatus: boolean = false,
-        numberStatus: boolean = false,
+        lowercaseStatus: boolean = false,
         symbolStatus: boolean = false,
         digitStatus: boolean = false
     ) {
         this._password = '';
         this._length = length;
         this._uppercaseStatus = uppercaseStatus;
-        this._numberStatus = numberStatus;
+        this._lowercaseStatus = lowercaseStatus;
         this._symbolStatus = symbolStatus;
         this._digitStatus = digitStatus;
     }
 
+    private dataAlphabetLowerCase: string = 'abcdefghijklmnopqrtuvwxyz';
+    private dataAlphabetUpperCase: string = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+    private dataSymbols: string = "~`! @#$%^&*()_-+={[}]|:;'<,>.?/";
+    private dataDigits: string = '1234567890';
 
+
+    getLength = ():number => {
+        const lengthValue: number = parseInt((<HTMLInputElement>document.querySelector("#length")).value, 10);
+        return lengthValue;
+    }
+
+    updateSettings = () => {
+        this._length = this.getLength();
+        this._uppercaseStatus = (<HTMLInputElement>document.querySelector('#toggleUppercase')).checked;
+        this._lowercaseStatus = (<HTMLInputElement>document.querySelector('#toggleLowercase')).checked;
+        this._symbolStatus = (<HTMLInputElement>document.querySelector('#toggleSymbols')).checked;
+        this._digitStatus = (<HTMLInputElement>document.querySelector('#toggleDigits')).checked;
+        console.log("settings done")
+    }
+
+    generateDataset= ():string => {
+        let dataset: string = "";
+        if (this._digitStatus) {
+            dataset += this.dataDigits;
+        }
+        if (this._lowercaseStatus) {
+            dataset += this.dataAlphabetLowerCase;
+        }
+        if (this._symbolStatus) {
+            dataset += this.dataSymbols;
+        }
+        if (this._uppercaseStatus) {
+            dataset += this.dataAlphabetUpperCase;
+        }
+
+        return dataset
+    }
+
+    generatePassword = () => {
+        this.updateSettings();
+        const dataset = this.generateDataset()
+    }
 }
+
+const guinea = new PasswordGenerator();
+guinea.generatePassword();
+
