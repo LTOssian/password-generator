@@ -70,6 +70,8 @@ const copyButton = <HTMLButtonElement>document.querySelector(".copyButton");
 const refreshButton = <HTMLButtonElement>document.querySelector(".resetButton");
 const anyClick = <HTMLElement>document.querySelector(".update");
 const lengthOutput = <HTMLElement>document.querySelector("strong");
+const everyInput = document.querySelectorAll('input');
+
  
 
 
@@ -118,7 +120,20 @@ class PasswordGenerator {
         this._lowercaseStatus = (<HTMLInputElement>document.querySelector('#toggleLowercase')).checked;
         this._symbolStatus = (<HTMLInputElement>document.querySelector('#toggleSymbols')).checked;
         this._digitStatus = (<HTMLInputElement>document.querySelector('#toggleDigits')).checked;
-        console.log("settings done")
+    }
+
+    handleStrenghBadge = () => {
+        if (this._password.length > 11) {
+            strenghBadge.innerText = "VERY STRONG";
+        } else if (this._password.length > 9) {
+            strenghBadge.innerText = "STRONG";
+        } else if (this._password.length > 7) {
+            strenghBadge.innerText = "GOOD";
+        } else if (this._password.length > 4) {
+            strenghBadge.innerText = "WEAK";
+        } else {
+            strenghBadge.innerText = "VERY WEAK";
+        }
     }
 
     generateDataset= ():string => {
@@ -151,6 +166,7 @@ class PasswordGenerator {
                 this._password += dataset[Math.floor(Math.random() * dataset.length)];
             }
             this.showOutput();
+            this.handleStrenghBadge();
         } else {
             //handle error function
             return;
@@ -159,3 +175,8 @@ class PasswordGenerator {
 }
 
 refreshButton.addEventListener('click', new PasswordGenerator().generatePassword);
+everyInput.forEach(element => {
+    element.addEventListener('click', new PasswordGenerator().generatePassword);
+    element.addEventListener('change', new PasswordGenerator().generatePassword);
+})
+
