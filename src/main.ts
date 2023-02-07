@@ -34,7 +34,7 @@ document.querySelector<HTMLDivElement>('#app')!.innerHTML = `
                     <strong><output id="num">11</output></strong>
                 </label>
                 <div class="rangeInput">
-                    <input type="range" min="1" max="21" value="11" id="length" oninput="num.value = this.value">
+                    <input type="range" min="1" max="25" value="11" id="length" oninput="num.value = this.value">
                 </div>
             </div>
             <div class="charContainer">
@@ -153,9 +153,9 @@ class PasswordGenerator {
             this.showOutput();
         } else {
             //handle error function
+            return;
         }
     }
-
 }
 
 refreshButton.addEventListener('click', new PasswordGenerator().generatePassword);
