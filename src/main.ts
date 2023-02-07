@@ -18,7 +18,7 @@ document.querySelector<HTMLDivElement>('#app')!.innerHTML = `
 
                 <div class="passwordOutput">
                     <p class="password">PTx1f5DaFX</p>
-                    <span class="strenghBadge">Very Strong</span>
+                    <span class="strengthBadge">Very Strong</span>
                     <button class="resetButton">
                         <img src="../assets/refresh.svg"></img>
                     </button>
@@ -65,7 +65,7 @@ document.querySelector<HTMLDivElement>('#app')!.innerHTML = `
 `
 
 const passwordOutput = <HTMLParagraphElement>document.querySelector(".password");
-const strenghBadge = <HTMLSpanElement>document.querySelector(".strenghBadge");
+const strengthBadge = <HTMLSpanElement>document.querySelector(".strengthBadge");
 const copyButton = <HTMLButtonElement>document.querySelector(".copyButton");
 const refreshButton = <HTMLButtonElement>document.querySelector(".resetButton");
 const anyClick = <HTMLElement>document.querySelector(".update");
@@ -122,17 +122,18 @@ class PasswordGenerator {
         this._digitStatus = (<HTMLInputElement>document.querySelector('#toggleDigits')).checked;
     }
 
-    handleStrenghBadge = () => {
+
+    handleStrengthBadge = () => {
         if (this._password.length > 11) {
-            strenghBadge.innerText = "VERY STRONG";
+            strengthBadge.innerText = "VERY STRONG";
         } else if (this._password.length > 9) {
-            strenghBadge.innerText = "STRONG";
+            strengthBadge.innerText = "STRONG";
         } else if (this._password.length > 7) {
-            strenghBadge.innerText = "GOOD";
+            strengthBadge.innerText = "GOOD";
         } else if (this._password.length > 4) {
-            strenghBadge.innerText = "WEAK";
+            strengthBadge.innerText = "WEAK";
         } else {
-            strenghBadge.innerText = "VERY WEAK";
+            strengthBadge.innerText = "VERY WEAK";
         }
     }
 
@@ -166,7 +167,7 @@ class PasswordGenerator {
                 this._password += dataset[Math.floor(Math.random() * dataset.length)];
             }
             this.showOutput();
-            this.handleStrenghBadge();
+            this.handleStrengthBadge();
         } else {
             //handle error function
             return;
