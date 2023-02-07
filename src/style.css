@@ -281,3 +281,16 @@ input[type="checkbox"] {
         width: 365px;
     }
 }
+
+.loadBtn {
+    animation: spin .5s;
+}
+
+@keyframes spin {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}

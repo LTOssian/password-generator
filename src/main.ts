@@ -187,13 +187,20 @@ class PasswordGenerator {
     }
 }
 
-refreshButton.addEventListener('click', new PasswordGenerator().generatePassword);
+refreshButton.addEventListener('click', (e: Event) => {
+    new PasswordGenerator().generatePassword();
+    e.preventDefault();
+    refreshButton.classList.add('loadBtn');
+    setTimeout(() => {
+        refreshButton.classList.remove('loadBtn');
+    }, 500);
+});
+
 everyInput.forEach(element => {
     element.addEventListener('click', new PasswordGenerator().generatePassword);
     element.addEventListener('change', new PasswordGenerator().generatePassword);
 })
 
-//todo : img switching with badge, and badge style switching as well
-//refresh button animation (css)
+//todo : img switching with badge
 //style input range
 //style input checkbox
