@@ -96,7 +96,6 @@ h1 {
 }
 
 .strengthBadge {
-    background-color: var(--clr-very-strong);
     height: 2rem;    
     color: white;
     letter-spacing: 2px;
@@ -110,7 +109,21 @@ h1 {
     width: fit-content;
     overflow: hidden;
     text-overflow: ellipsis;
-
+}
+.veryStrongBadge {
+    background-color: var(--clr-very-strong);
+}
+.strongBadge {
+    background-color: var(--clr-strong);
+}
+.goodBadge {
+    background-color: var(--clr-good);
+}
+.weakBadge {
+    background-color: var(--clr-weak);
+}
+.veryWeakBadge {
+    background-color: var(--clr-very-weak);
 }
 
 .resetButton {

@@ -18,7 +18,7 @@ document.querySelector<HTMLDivElement>('#app')!.innerHTML = `
 
                 <div class="passwordOutput">
                     <p class="password">PTx1f5DaFX</p>
-                    <span class="strengthBadge">Very Strong</span>
+                    <span class="strengthBadge strongBadge">Strong</span>
                     <button class="resetButton">
                         <img src="../assets/refresh.svg"></img>
                     </button>
@@ -125,15 +125,27 @@ class PasswordGenerator {
 
     handleStrengthBadge = () => {
         if (this._password.length > 11) {
-            strengthBadge.innerText = "VERY STRONG";
+            strengthBadge.innerText = "Very Strong";
+            strengthBadge.classList.value='strengthBadge';
+            strengthBadge.classList.add('veryStrongBadge');
         } else if (this._password.length > 9) {
-            strengthBadge.innerText = "STRONG";
+            strengthBadge.classList.value='strengthBadge';
+            strengthBadge.innerText = "Strong";
+            strengthBadge.classList.add('strongBadge');
         } else if (this._password.length > 7) {
-            strengthBadge.innerText = "GOOD";
+            strengthBadge.classList.value='strengthBadge';
+            strengthBadge.innerText = "Good";
+            strengthBadge.classList.add('goodBadge');
+
         } else if (this._password.length > 4) {
-            strengthBadge.innerText = "WEAK";
+            strengthBadge.classList.value='strengthBadge';
+            strengthBadge.innerText = "Weak";
+            strengthBadge.classList.add('weakBadge');
+
         } else {
-            strengthBadge.innerText = "VERY WEAK";
+            strengthBadge.classList.value = 'strengthBadge';
+            strengthBadge.innerText = "Very Weak";
+            strengthBadge.classList.add('veryWeakBadge');
         }
     }
 
@@ -181,3 +193,7 @@ everyInput.forEach(element => {
     element.addEventListener('change', new PasswordGenerator().generatePassword);
 })
 
+//todo : img switching with badge, and badge style switching as well
+//refresh button animation (css)
+//style input range
+//style input checkbox
