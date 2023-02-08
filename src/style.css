@@ -139,7 +139,6 @@ h1 {
     padding: 1rem;
     border-radius: 28px;
     background-color: var(--clr-very-strong) ;
-    box-shadow: 0 0px 16px 0 #0070f6;
     border: none;
     margin-left: 1rem;
     margin-right: 1rem;
@@ -156,6 +155,7 @@ h1 {
 .copyButton:hover {
     padding: 1.175rem;
     transition: all ease .3s;
+
 }
 
 .copiedBehavior {
@@ -219,6 +219,8 @@ label output {
 input[type="range"] {
     width: 200px;
 }
+
+
 
 /* Input checkbox styling */
 input[type="checkbox"] {
