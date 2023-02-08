@@ -41,6 +41,10 @@ h1 {
     margin: 1rem 0 2rem 0;
 }
 
+#header p {
+    font-size: 22px;
+}
+
 
 #appContainer {
     display: flex;
@@ -263,6 +267,7 @@ input[type="checkbox"] {
     :root {
         --fs-cta: 0.75rem;
         --fs-param: 1.125rem;
+        --fs-heading: 2.625rem;
     }
 
     #app {
