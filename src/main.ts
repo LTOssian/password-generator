@@ -9,7 +9,7 @@ document.querySelector<HTMLDivElement>('#app')!.innerHTML = `
 <section id="appContainer">
 
     <div class="imgContainer">
-        <img src="../assets/fortress.svg" alt="Image describing the strenght of the password : Fortress"></img>
+        <img id="imgOutput" src="../assets/fortress.svg" alt="Image describing the strenght of the password : Fortress"></img>
     </div>
 
     <div id="passwordParams">
@@ -19,12 +19,12 @@ document.querySelector<HTMLDivElement>('#app')!.innerHTML = `
                 <div class="passwordOutput">
                     <p class="password">PTx1f5DaFX</p>
                     <span class="strengthBadge strongBadge">Strong</span>
-                    <button class="resetButton">
-                        <img src="../assets/refresh.svg"></img>
+                    <button type="submit" class="resetButton">
+                        <img src="../assets/refresh.svg" alt="refresh button"></img>
                     </button>
                 </div>
                 <div class="btnContainer">
-                    <button class="copyButton">Copy</button>
+                    <button type="submit" class="copyButton">Copy</button>
                 </div>
         </div>
         <div class="passwordSettings">
@@ -68,9 +68,8 @@ const passwordOutput = <HTMLParagraphElement>document.querySelector(".password")
 const strengthBadge = <HTMLSpanElement>document.querySelector(".strengthBadge");
 const copyButton = <HTMLButtonElement>document.querySelector(".copyButton");
 const refreshButton = <HTMLButtonElement>document.querySelector(".resetButton");
-const anyClick = <HTMLElement>document.querySelector(".update");
-const lengthOutput = <HTMLElement>document.querySelector("strong");
 const everyInput = document.querySelectorAll('input');
+const imgOutput = <HTMLImageElement>document.querySelector("#imgOutput");
 
  
 
@@ -114,38 +113,74 @@ class PasswordGenerator {
     }
 
     updateSettings = () => {
-        this.resetOutput()
-        this._length = this.getLength();
+        this.resetOutput();
+        this._length != this.getLength() ? this._length = this.getLength() : true;
         this._uppercaseStatus = (<HTMLInputElement>document.querySelector('#toggleUppercase')).checked;
         this._lowercaseStatus = (<HTMLInputElement>document.querySelector('#toggleLowercase')).checked;
         this._symbolStatus = (<HTMLInputElement>document.querySelector('#toggleSymbols')).checked;
         this._digitStatus = (<HTMLInputElement>document.querySelector('#toggleDigits')).checked;
     }
 
+    handleAnimation = () => {
+        imgOutput.classList.add("animation-fadeRight");
+        setTimeout(() => {
+            imgOutput.classList.remove("animation-fadeRight");
+        }, 1000);
+    }
 
     handleStrengthBadge = () => {
-        if (this._password.length > 11) {
-            strengthBadge.innerText = "Very Strong";
-            strengthBadge.classList.value='strengthBadge';
-            strengthBadge.classList.add('veryStrongBadge');
-        } else if (this._password.length > 9) {
-            strengthBadge.classList.value='strengthBadge';
-            strengthBadge.innerText = "Strong";
-            strengthBadge.classList.add('strongBadge');
-        } else if (this._password.length > 7) {
-            strengthBadge.classList.value='strengthBadge';
-            strengthBadge.innerText = "Good";
-            strengthBadge.classList.add('goodBadge');
+        if (this._length > 11) {
+            if (strengthBadge.innerText != "Very Strong") {
+                strengthBadge.innerText = "Very Strong";
+                imgOutput.src = "../assets/bunker.svg"
+                imgOutput.alt = "Image describing the strenght of the password : Bunker"
+                this.handleAnimation()
+                strengthBadge.classList.value='strengthBadge';
+                strengthBadge.classList.add('veryStrongBadge');
+            }
+            
+        } else if (this._length > 9) {
+            if (strengthBadge.innerText != "Strong") 
+            {
+                imgOutput.src = "../assets/fortress.svg"
+                imgOutput.alt = "Image describing the strenght of the password : Fortress"
+                this.handleAnimation();
+                strengthBadge.classList.value='strengthBadge';
+                strengthBadge.innerText = "Strong";
+                strengthBadge.classList.add('strongBadge');
+            }
+        } else if (this._length > 7) {
+            if (strengthBadge.innerText != "Good") {
+                imgOutput.src = "../assets/house.svg"
+                imgOutput.alt = "Image describing the strenght of the password : House"
+                this.handleAnimation();
+                strengthBadge.classList.value='strengthBadge';
+                strengthBadge.innerText = "Good";
+                strengthBadge.classList.add('goodBadge');
+            }
+            
 
-        } else if (this._password.length > 4) {
-            strengthBadge.classList.value='strengthBadge';
-            strengthBadge.innerText = "Weak";
-            strengthBadge.classList.add('weakBadge');
+        } else if (this._length > 4) {
+            if (strengthBadge.innerText != "Weak") {
+                imgOutput.src = "../assets/van.svg"
+                imgOutput.alt = "Image describing the strenght of the password : Van"
+                this.handleAnimation();
+                strengthBadge.classList.value='strengthBadge';
+                strengthBadge.innerText = "Weak";
+                strengthBadge.classList.add('weakBadge');
+            }
+            
 
         } else {
-            strengthBadge.classList.value = 'strengthBadge';
-            strengthBadge.innerText = "Very Weak";
-            strengthBadge.classList.add('veryWeakBadge');
+            if (strengthBadge.innerText != "Very Weak") {
+                imgOutput.src = "../assets/tent.svg"
+                imgOutput.alt = "Image describing the strenght of the password : Tent"
+                this.handleAnimation();
+                strengthBadge.classList.value = 'strengthBadge';
+                strengthBadge.innerText = "Very Weak";
+                strengthBadge.classList.add('veryWeakBadge');
+    
+            }
         }
     }
 
@@ -198,9 +233,25 @@ refreshButton.addEventListener('click', (e: Event) => {
 
 everyInput.forEach(element => {
     element.addEventListener('click', new PasswordGenerator().generatePassword);
-    element.addEventListener('change', new PasswordGenerator().generatePassword);
+    element.addEventListener('change', (e) => {
+        e.preventDefault();
+        new PasswordGenerator().generatePassword();
+    });
 })
 
-//todo : img switching with badge
+
+copyButton.addEventListener('click', (e) => {
+    e.preventDefault();
+    const copiedText:string = passwordOutput.innerText;
+    navigator.clipboard.writeText(copiedText);
+
+    copyButton.classList.add('copiedBehavior');
+    copyButton.innerText = "Copied";
+    setTimeout(() => {
+        copyButton.classList.remove('copiedBehavior');
+        copyButton.innerText = "Copy";
+    }, 1000)
+})
+
 //style input range
 //style input checkbox
