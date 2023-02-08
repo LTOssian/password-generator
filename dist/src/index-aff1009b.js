@@ -17,7 +17,7 @@ var p=Object.defineProperty;var m=(n,e,i)=>e in n?p(n,e,{enumerable:!0,configura
                     <p class="password">PTx1f5DaFX</p>
                     <span class="strengthBadge strongBadge">Strong</span>
                     <button type="submit" class="resetButton">
-                        <img src="./../assets/refresh.svg" alt="refresh button"></img>
+                        <img src="/assets/refresh.svg" alt="refresh button"></img>
                     </button>
                 </div>
                 <div class="btnContainer">
