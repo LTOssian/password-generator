@@ -79,8 +79,7 @@ h1 {
     border: 1px solid #EDEDED;
     border-radius: 24px;
     width: 537px;
-    justify-content: space-around;
-
+    justify-content: space-between;
 }
 
 .passwordOutput p {
@@ -152,12 +151,16 @@ h1 {
     letter-spacing: 2px;
     line-height: 12px;
     transition: all ease .3s;
-
 }
 
 .copyButton:hover {
     padding: 1.175rem;
     transition: all ease .3s;
+}
+
+.copiedBehavior {
+    background-color: #41cf7c;
+    box-shadow: 0 0 1rem 0 #41cf7c;
 }
 
 .btnContainer {
@@ -222,8 +225,6 @@ input[type="checkbox"] {
     width: 20px;
     height: 20px;
 }
-
-
 
 @media only screen and (max-width: 1180px) {
     :root {
@@ -293,4 +294,16 @@ input[type="checkbox"] {
     to {
         transform: rotate(360deg);
     }
+}
+
+@keyframes fadeRight {
+    0% {
+        opacity: 0;
+        transform: translate(-100%, 0);
+    } 
+}
+
+.animation-fadeRight {
+    animation-name: fadeRight;
+    animation-duration: 1s;
 }
