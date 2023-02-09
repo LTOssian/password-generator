@@ -6,14 +6,14 @@ Live Site URL: [Github Pages](https://ltossian.github.io/password-generator/)
 
 ## Table of contents
 
--[Overview](#overview)
+- [Overview](#overview)
     - [The challenge](#the-challenge)
     - [Screenshot](#screenshot)
--[My process](#my-process)
+- [My process](#my-process)
     - [Built with](#built-with)
     - [What I learned](#what-i-learned)
     - [Continued development](#continued-development)
-[Author](#author)
+- [Author](#author)
 
 ## Overview
 
