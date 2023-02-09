@@ -216,7 +216,6 @@ class PasswordGenerator {
             this.showOutput();
             this.handleStrengthBadge();
         } else {
-            //handle error function
             return;
         }
     }
@@ -252,6 +251,3 @@ copyButton.addEventListener('click', (e) => {
         copyButton.innerText = "Copy";
     }, 1000)
 })
-
-//style input range
-//style input checkbox
