@@ -1,2 +1,2 @@
 * text=auto
-*.css linguist-detectable=false
+dist/* linguist-vendored
